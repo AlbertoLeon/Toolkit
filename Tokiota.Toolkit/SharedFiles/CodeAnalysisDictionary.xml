@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Dictionary format defined here: http://msdn.microsoft.com/en-us/library/bb514188.aspx -->
+<Dictionary>
+	<Words>
+		<!--
+    <Unrecognized>
+      <Word></Word>
+    </Unrecognized>
+    -->
+    <!-- Capitalize proper nouns and acronyms; "regular words" just lowercase. -->
+		<Recognized>
+      <Word>Tokiota</Word>
+			<Word>Autofac</Word>
+      <Word>Moq</Word>
+      <Word>IoC</Word>
+		</Recognized>
+	</Words>
+	<!--
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym></Acronym>
+    </CasingExceptions>
+  </Acronyms>
+  -->
+</Dictionary>
