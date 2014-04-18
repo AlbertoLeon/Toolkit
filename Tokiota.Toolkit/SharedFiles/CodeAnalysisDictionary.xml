@@ -15,11 +15,10 @@
       <Word>IoC</Word>
 		</Recognized>
 	</Words>
-	<!--
+	
   <Acronyms>
     <CasingExceptions>
-      <Acronym></Acronym>
+      <Acronym>IoC</Acronym>
     </CasingExceptions>
   </Acronyms>
-  -->
 </Dictionary>
