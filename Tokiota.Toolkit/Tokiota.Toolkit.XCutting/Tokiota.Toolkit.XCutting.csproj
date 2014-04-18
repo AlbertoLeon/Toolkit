@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53ab4bcb-c378-4747-9e00-89131cc4c5c6}</ProjectGuid>
+    <ProjectGuid>{53AB4BCB-C378-4747-9E00-89131CC4C5C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tokiota.Toolkit.XCutting</RootNamespace>
@@ -36,7 +36,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IoC\IModuleRegistration.cs" />
+    <Compile Include="IoC\IBuilder.cs" />
+    <Compile Include="IoC\IContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -47,5 +49,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>
