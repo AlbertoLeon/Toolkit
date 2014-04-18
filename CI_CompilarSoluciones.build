@@ -4,6 +4,6 @@
 	</Target>
 	<Target Name="Compile" >
 		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
-		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="Build" Properties="Configuration=$(BuildConfiguration)" />
+		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="Build" Properties="Platform=Any CPU;Configuration=$(BuildConfiguration)" />
 	</Target>
 </Project>
