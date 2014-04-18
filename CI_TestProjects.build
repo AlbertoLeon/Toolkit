@@ -1,0 +1,14 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Infrastructure\Agn.Core.UI.Test\bin\$(Configuration)\Agn.Core.UI.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Infrastructure\Agn.XCutting.Test\bin\$(Configuration)\Agn.XCutting.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Cross\Agn.Cross.Command.Test\bin\$(Configuration)\Agn.Cross.Command.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Cross\Agn.Cross.Domain.Test\bin\$(Configuration)\Agn.Cross.Domain.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Domain\Agn.Domain.Test\bin\$(Configuration)\Agn.Domain.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Infrastructure\Agn.Infrastructure.Modules.Test\bin\$(Configuration)\Agn.Infrastructure.Modules.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Hub\Agn.Hub.Service.Process.Test\Agn.Hub.Service.Process.Test\bin\$(Configuration)\Agn.Hub.Service.Process.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Tests\Modules\Agn.Module.Appearers.Test\bin\$(Configuration)\Agn.Module.Appearers.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Modules\Agn.Module.Bienes.Test\bin\$(Configuration)\Agn.Module.Bienes.Test.dll" />
+    <TestProjects Include="$(WorkingDirectory)src\Agn\Modules\Agn.Module.Documentos.Test\bin\$(Configuration)\Agn.Module.Documentos.Test.dll" />
+  </ItemGroup>
+</Project>

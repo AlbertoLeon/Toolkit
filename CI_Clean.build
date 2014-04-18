@@ -1,0 +1,12 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Clean">
+	<Message Text="Remove directory $(BuildDirectory)" />
+    <RemoveDir Directories="$(BuildDirectory)" ContinueOnError="true" />
+		<RemoveDir
+			Directories="%(AllProject.RootDir)%(AllProject.Directory)bin"
+			Condition="Exists('%(AllProject.RootDir)%(AllProject.Directory)bin')" />
+		<RemoveDir
+			Directories="%(AllProject.RootDir)%(AllProject.Directory)obj"
+			Condition="Exists('%(AllProject.RootDir)%(AllProject.Directory)obj')" />
+  </Target>
+</Project>

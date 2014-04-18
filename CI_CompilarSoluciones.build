@@ -1,0 +1,9 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="RestorePackages" >
+		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
+	</Target>
+	<Target Name="Compile" >
+		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
+		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="Build" Properties="Configuration=$(BuildConfiguration)" />
+	</Target>
+</Project>

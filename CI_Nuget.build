@@ -1,0 +1,34 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="UpdateNugetPackages" >
+    <CallTarget Targets="GetPackagesConfig" />
+    <CallTarget Targets="ConfigurarProxy" />
+    <CallTarget Targets="InstallUpdatedPackages" />
+  </Target>
+
+  <Target Name="ConfigurarProxy" >
+  </Target>
+
+  <Target Name="GetPackagesConfig">
+    <MSBuild.ExtensionPack.FileSystem.FindUnder TaskAction="FindFiles" Path="$(WorkingDirectory)src\Agn\" SearchPattern="packages.config" >
+      <Output ItemName="FilesPackagesConfigFound" TaskParameter="FoundItems"/>
+    </MSBuild.ExtensionPack.FileSystem.FindUnder>
+    <Message Text="Config encontrados ==========================" />
+    <Message Text="AllFoundFiles:%0d%0a@(FilesPackagesConfigFound,'%0d%0a')"/>
+  </Target>
+
+  <Target Name="UpdatePackages" >
+    <Message Text="Updating Solution: $(InfrastructureSolution)"/>
+    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(InfrastructureSolution)&quot;"/>
+    <Message Text="Updating Solution: $(HubSolution)"/>
+    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(HubSolution)&quot;"/>
+    <Message Text="Updating Solution: $(WpfSolution)"/>
+    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(WpfSolution)&quot;"/>
+    <Message Text="Updating Solution: $(WordSolution)"/>
+    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(WordSolution)&quot;"/>
+  </Target>
+
+  <Target Name="InstallUpdatedPackages" Inputs="@(FilesPackagesConfigFound)" Outputs="@(FilesPackagesConfigFound->%(FilesPackagesConfigFound.Identity))" >
+    <Message Text="Installing: %(FilesPackagesConfigFound.Identity)"/>
+    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) install &quot;%(FilesPackagesConfigFound.Identity)&quot; -source &quot;$(PackageSource)&quot;"/>
+  </Target>
+</Project>

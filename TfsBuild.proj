@@ -1,0 +1,70 @@
+<Project InitialTargets="__EnvironmentSetup" DefaultTargets="None" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+		<!-- BuildDirectory is the root of where build output goes. -->
+		<BuildDirectory>$(MSBuildProjectDirectory)\build_output</BuildDirectory>
+
+		<!-- Setting the path to MSBuildCommunityTasks to . allows you to check them in; otherwise you must install them. -->
+		<MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
+
+		<WorkingDirectory>$(MSBuildProjectDirectory)\Tokiota.Toolkit</WorkingDirectory>
+		
+		<!-- PackageInstallDirectory is where NuGet installs the set of dependencies. -->
+		<PackageInstallDirectory>$(MSBuildProjectDirectory)\packages</PackageInstallDirectory>
+
+		<!-- Set this to false via command-line when debugging/troubleshooting NuGet packaging. -->
+		<DeleteNuGetStaging Condition="'$(DeleteNuGetStaging)' == ''">true</DeleteNuGetStaging>
+
+		<NuGetCommandLinePath>$(MSBuildProjectDirectory)\Tools\NuGet\NuGet.exe</NuGetCommandLinePath>
+		
+		<PackageSource>C:\NuGet\Cache</PackageSource>
+		
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- SolutionFile is the solution to build. Technically we could add more if needed. -->
+		<SolutionFile Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Tokiota.Toolkit.sln" />
+	</ItemGroup>
+	<PropertyGroup Condition="'$(BuildConfiguration)' == ''">
+		<!-- Unless otherwise specified, dev build is Debug, production build is Release. -->
+		<BuildConfiguration Condition="'$(Production)' == 'true'">Release</BuildConfiguration>
+		<BuildConfiguration Condition="'$(Production)' != 'true'">Debug</BuildConfiguration>
+	</PropertyGroup>
+
+  <Import Project="$(MSBuildProjectDirectory)..\Tools\BuildTasks\MSBuild.Community.Tasks.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\PackageVersions.build" />
+
+  <Import Project="CI_TestProjects.build" />
+  <Import Project="CI_Clean.build" />
+  <Import Project="CI_Nuget.build" />
+  <Import Project="CI_CompilarSoluciones.build" />
+  <Import Project="CI_EjecutarPruebas.build" />
+
+  <Target Name="__EnvironmentSetup">
+		<Message Text="dir $(MSBuildProjectDirectory)" />
+		<ItemGroup>
+			<AllProject Include="$(MSBuildProjectDirectory)\**\*.csproj" />
+			<TestProject Include="$(MSBuildProjectDirectory)\**\Tests\**\*.csproj" />
+			<SourceProject Include="$(MSBuildProjectDirectory)\**\Source\**\*.csproj" />
+			<ExampleProject Include="$(MSBuildProjectDirectory)\**\Examples\**\*.csproj" />
+		</ItemGroup>
+		<Time Format="yyyy-MM-dd HH:mm">
+			<Output TaskParameter="FormattedTime" PropertyName="BuildTime" />
+		</Time>
+		<Time Format="yyyy">
+			<Output TaskParameter="FormattedTime" PropertyName="BuildYear" />
+		</Time>
+		<Message Text="Environment Setup:" />
+		<Message Text="Assembly Version:    $(AssemblyVersion)" />
+		<Message Text="Build Configuration: $(BuildConfiguration)" />
+		<Message Text="Build Directory:     $(BuildDirectory)" />
+		<Message Text="Build Time:          $(BuildTime)" />
+	</Target>
+  <Target Name="CI-DEV" >
+    <CallTarget Targets="Clean" />
+    <CallTarget Targets="UpdateNugetPackages" />
+    <CallTarget Targets="BuildWord" />
+    <CallTarget Targets="Test" />
+  </Target>
+  <Target Name="None" >
+	<CallTarget Targets="Clean; RestorePackages; Compile" />
+  </Target>
+</Project>
