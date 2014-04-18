@@ -2,8 +2,8 @@
   <PropertyGroup>
 		<!-- BuildDirectory is the root of where build output goes. -->
 		<!--<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' == ''>$(MSBuildProjectDirectory)\build_output</BuildDirectory>-->
-		<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' == ''">$(MSBuildProjectDirectory)\build_output</BuildDirectory>
-		<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' != ''">$(Env:TF_BUILD_BINARIESDIRECTORY)</BuildDirectory>
+		<DefaultPackageOutputDir>$(MSBuildProjectDirectory)\build_output</DefaultPackageOutputDir>
+		
 
 		<!-- Setting the path to MSBuildCommunityTasks to . allows you to check them in; otherwise you must install them. -->
 		<MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
@@ -55,10 +55,10 @@
 			<Output TaskParameter="FormattedTime" PropertyName="BuildYear" />
 		</Time>
 		<Message Text="Environment Setup:" />
-		<Message Text="Assembly Version:    $(AssemblyVersion)" />
-		<Message Text="Build Configuration: $(BuildConfiguration)" />
-		<Message Text="Build Directory:     $(BuildDirectory)" />
-		<Message Text="Build Time:          $(BuildTime)" />
+		<Message Text="Assembly Version:    		$(AssemblyVersion)" />
+		<Message Text="Build Configuration: 		$(BuildConfiguration)" />
+		<Message Text="Default Package OutputDir:   $(DefaultPackageOutputDir)" />
+		<Message Text="Build Time:          		$(BuildTime)" />
 	</Target>
   <Target Name="CI-DEV" >
     <CallTarget Targets="Clean" />
