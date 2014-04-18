@@ -1,7 +1,9 @@
 <Project InitialTargets="__EnvironmentSetup" DefaultTargets="None" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
 		<!-- BuildDirectory is the root of where build output goes. -->
-		<BuildDirectory>$(MSBuildProjectDirectory)\build_output</BuildDirectory>
+		<!--<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' == ''>$(MSBuildProjectDirectory)\build_output</BuildDirectory>-->
+		<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' == ''">$(MSBuildProjectDirectory)\build_output</BuildDirectory>
+		<BuildDirectory Condition="'$(Env:TF_BUILD_BINARIESDIRECTORY)' != ''">$(Env:TF_BUILD_BINARIESDIRECTORY)</BuildDirectory>
 
 		<!-- Setting the path to MSBuildCommunityTasks to . allows you to check them in; otherwise you must install them. -->
 		<MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
