@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Tokiota.Toolkit.XCutting.IoC
 {
@@ -6,37 +7,39 @@ namespace Tokiota.Toolkit.XCutting.IoC
     {
         #region Public Methods and Operators
 
-        void Register<TClass>();
+        IBuilder Register<TClass>();
 
-        void Register<TInterface, TClass>() where TClass : TInterface;
+        IBuilder Register<TInterface, TClass>() where TClass : TInterface;
 
-        void Register<TClass>(string name);
+        IBuilder Register<TClass>(string name);
 
-        void Register<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder Register<TInterface, TClass>(string name) where TClass : TInterface;
 
-        void RegisterAsRequestScoped<TClass>();
+        IBuilder RegisterAsRequestScoped<TClass>();
 
-        void RegisterAsRequestScoped<TInterface, TClass>() where TClass : TInterface;
+        IBuilder RegisterAsRequestScoped<TInterface, TClass>() where TClass : TInterface;
 
-        void RegisterAsRequestScoped<TClass>(string name);
+        IBuilder RegisterAsRequestScoped<TClass>(string name);
 
-        void RegisterAsRequestScoped<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder RegisterAsRequestScoped<TInterface, TClass>(string name) where TClass : TInterface;
 
-        void RegisterAsSingleInstance<TClass>();
+        IBuilder RegisterAsSingleInstance<TClass>();
 
-        void RegisterAsSingleInstance(Type implementation, Type[] interfaces);
+        IBuilder RegisterAsSingleInstance(Type implementation, Type[] interfaces);
 
-        void RegisterAsSingleInstance<TInterface, TClass>() where TClass : TInterface;
+        IBuilder RegisterAsSingleInstance<TInterface, TClass>() where TClass : TInterface;
 
-        void RegisterAsSingleInstance<TClass>(string name);
+        IBuilder RegisterAsSingleInstance<TClass>(string name);
 
-        void RegisterAsSingleInstance<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder RegisterAsSingleInstance<TInterface, TClass>(string name) where TClass : TInterface;
 
-        void RegisterAssembly(params string[] assemblyNames);
+        IBuilder RegisterAssembly(params string[] assemblyNames);
 
-        void RegisterInstance<TInterface, TClass>(TClass instance) where TClass : class, TInterface;
+        IBuilder RegisterInstance<TInterface, TClass>(TClass instance) where TClass : class, TInterface;
 
-        void RegisterInstance(object instance);
+        IBuilder RegisterInstance(object instance);
+
+        IBuilder RegisterTypesInAssemblyFilterByInterfaceType(Assembly assembly, Type filterName);
 
         #endregion
     }
