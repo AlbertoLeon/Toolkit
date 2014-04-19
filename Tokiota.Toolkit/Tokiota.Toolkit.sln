@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokiota.Toolkit.XCutting.IoC.AutofacAdapter", "Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj", "{3A6BFE45-D3EC-4119-A303-A210F2E605E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{507535BB-47F2-49D1-8DD8-22F285FF6D92}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.Test", "Test\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.Test\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.Test.csproj", "{1EF3E985-C362-4C9A-81F5-2B8BFEF25E39}"
 EndProject
