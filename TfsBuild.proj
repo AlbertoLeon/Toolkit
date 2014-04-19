@@ -31,7 +31,7 @@
 		<BuildConfiguration Condition="'$(Production)' != 'true'">Debug</BuildConfiguration>
 	</PropertyGroup>
 
-  <Import Project="$(MSBuildProjectDirectory)..\Tools\BuildTasks\MSBuild.Community.Tasks.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\Tools\BuildTasks\MSBuild.Community.Tasks.targets" />
   <Import Project="$(MSBuildProjectDirectory)\PackageVersions.build" />
 
   <Import Project="CI_TestProjects.build" />
@@ -67,6 +67,7 @@
     <CallTarget Targets="Test" />
   </Target>
   <Target Name="None" >
-	<CallTarget Targets="Clean; RestorePackages; Compile" />
+	<CallTarget Targets="Clean; RestorePackages; Compile; Test" />
+	<CallTarget Targets="CreatePackages" />
   </Target>
 </Project>

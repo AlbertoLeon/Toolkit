@@ -1,9 +1,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Target Name="RestorePackages" >
-		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
-	</Target>
+	
 	<Target Name="Compile" >
-		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
+		
+		<Message Text="Compilando ...." />
 		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="Build" Properties="Platform=Any CPU;Configuration=$(BuildConfiguration)" />
+		<ItemGroup>
+			<Source45OutputList
+				Include="
+					%(SourceProject.RootDir)%(SourceProject.Directory)bin\$(BuildConfiguration)\Tokiota.Toolkit.XCutting.*;
+					%(SourceProject.RootDir)%(SourceProject.Directory)bin\$(BuildConfiguration)\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.*" 
+				Exclude="
+					**\*.vshost.*;
+					%(SourceProject.RootDir)%(SourceProject.Directory)bin\$(BuildConfiguration)\*.CodeAnalysisLog.*;
+					%(SourceProject.RootDir)%(SourceProject.Directory)bin\$(BuildConfiguration)\*.lastcodeanalysissucceeded" />
+		</ItemGroup>
+		
+		<Message Text="Copiando $(DefaultPackageOutputDir)" />
+		
+		<Copy SourceFiles="@(Source45OutputList)" DestinationFolder="$(DefaultPackageOutputDir)\bin\net45" />
+		
 	</Target>
 </Project>

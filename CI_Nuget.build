@@ -1,34 +1,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="UpdateNugetPackages" >
-    <CallTarget Targets="GetPackagesConfig" />
-    <CallTarget Targets="ConfigurarProxy" />
-    <CallTarget Targets="InstallUpdatedPackages" />
-  </Target>
+	<Target Name="RestorePackages" >
+		<Exec Command="&quot;$(NuGetCommandLinePath)&quot; restore &quot;%(SolutionFile.FullPath)&quot;" />
+	</Target>
+	
+	<Target Name="CreatePackages" >
+		<PropertyGroup>
+			<!-- All packages will end up in the package directory. -->
+			<PackageDirectory>$(DefaultPackageOutputDir)\package</PackageDirectory>
 
-  <Target Name="ConfigurarProxy" >
-  </Target>
-
-  <Target Name="GetPackagesConfig">
-    <MSBuild.ExtensionPack.FileSystem.FindUnder TaskAction="FindFiles" Path="$(WorkingDirectory)src\Agn\" SearchPattern="packages.config" >
-      <Output ItemName="FilesPackagesConfigFound" TaskParameter="FoundItems"/>
-    </MSBuild.ExtensionPack.FileSystem.FindUnder>
-    <Message Text="Config encontrados ==========================" />
-    <Message Text="AllFoundFiles:%0d%0a@(FilesPackagesConfigFound,'%0d%0a')"/>
-  </Target>
-
-  <Target Name="UpdatePackages" >
-    <Message Text="Updating Solution: $(InfrastructureSolution)"/>
-    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(InfrastructureSolution)&quot;"/>
-    <Message Text="Updating Solution: $(HubSolution)"/>
-    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(HubSolution)&quot;"/>
-    <Message Text="Updating Solution: $(WpfSolution)"/>
-    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(WpfSolution)&quot;"/>
-    <Message Text="Updating Solution: $(WordSolution)"/>
-    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) update &quot;$(WordSolution)&quot;"/>
-  </Target>
-
-  <Target Name="InstallUpdatedPackages" Inputs="@(FilesPackagesConfigFound)" Outputs="@(FilesPackagesConfigFound->%(FilesPackagesConfigFound.Identity))" >
-    <Message Text="Installing: %(FilesPackagesConfigFound.Identity)"/>
-    <Exec WorkingDirectory="$(WorkingDirectory)src\Agn\packages" Command="$(NugetExe) install &quot;%(FilesPackagesConfigFound.Identity)&quot; -source &quot;$(PackageSource)&quot;"/>
-  </Target>
+			<!-- Nuspec/NuGet package contents will be staged in a temporary location for building. -->
+			<StagingDirectory>$(PackageDirectory)\nuspec-staging</StagingDirectory>
+		</PropertyGroup>
+		<MakeDir Directories="$(PackageDirectory);$(StagingDirectory)"/>
+		<Message Text="nuget pack para  $(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj" />
+		<Exec 	Command="&quot;$(NuGetCommandLinePath)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj&quot; -IncludeReferencedProjects" 
+				WorkingDirectory="$(PackageDirectory)"/>	
+	</Target>
 </Project>
