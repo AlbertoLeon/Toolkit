@@ -44,7 +44,6 @@
 		<Message Text="dir $(MSBuildProjectDirectory)" />
 		<ItemGroup>
 			<AllProject Include="$(MSBuildProjectDirectory)\**\*.csproj" />
-			<TestProject Include="$(MSBuildProjectDirectory)\**\Tests\**\*.csproj" />
 			<SourceProject Include="$(MSBuildProjectDirectory)\**\Source\**\*.csproj" />
 			<ExampleProject Include="$(MSBuildProjectDirectory)\**\Examples\**\*.csproj" />
 		</ItemGroup>
