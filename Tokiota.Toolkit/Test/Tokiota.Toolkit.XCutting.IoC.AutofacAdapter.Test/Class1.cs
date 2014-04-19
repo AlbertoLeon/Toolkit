@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xunit;
+﻿using Xunit;
 using Xunit.Should;
 
 namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.Test
 {
-    
     public class Resolved
     {
+        #region Public Methods and Operators
+
         [Fact]
         public void FactMethodName()
         {
@@ -19,5 +14,7 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.Test
 
             x.ShouldBeTrue();
         }
+
+        #endregion
     }
 }

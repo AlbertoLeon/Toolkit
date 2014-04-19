@@ -4,29 +4,30 @@ using System.Reflection;
 namespace Tokiota.Toolkit.XCutting.IoC
 {
     /// <summary>
-    /// 
     /// </summary>
     public interface IBuilder
     {
         #region Public Methods and Operators
 
         /// <summary>
-        /// Registers this instance.
+        ///     Registers this instance.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
-        IBuilder Register<TClass>();
+        IBuilder Register<TClass>() where TClass : class;
 
         /// <summary>
-        /// Registers this instance.
+        ///     Registers this instance.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
-        IBuilder Register<TInterface, TClass>() where TClass : TInterface;
+        IBuilder Register<TInterface, TClass>()
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers the specified name.
+        ///     Registers the specified name.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
@@ -34,31 +35,35 @@ namespace Tokiota.Toolkit.XCutting.IoC
         IBuilder Register<TClass>(string name) where TClass : class;
 
         /// <summary>
-        /// Registers the specified name.
+        ///     Registers the specified name.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        IBuilder Register<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder Register<TInterface, TClass>(string name)
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers as request scoped.
+        ///     Registers as request scoped.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
-        IBuilder RegisterAsRequestScoped<TClass>();
+        IBuilder RegisterAsRequestScoped<TClass>() where TClass : class;
 
         /// <summary>
-        /// Registers as request scoped.
+        ///     Registers as request scoped.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
-        IBuilder RegisterAsRequestScoped<TInterface, TClass>() where TClass : TInterface;
+        IBuilder RegisterAsRequestScoped<TInterface, TClass>()
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers as request scoped.
+        ///     Registers as request scoped.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
@@ -66,23 +71,25 @@ namespace Tokiota.Toolkit.XCutting.IoC
         IBuilder RegisterAsRequestScoped<TClass>(string name) where TClass : class;
 
         /// <summary>
-        /// Registers as request scoped.
+        ///     Registers as request scoped.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        IBuilder RegisterAsRequestScoped<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder RegisterAsRequestScoped<TInterface, TClass>(string name)
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers as single instance.
+        ///     Registers as single instance.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
         IBuilder RegisterAsSingleInstance<TClass>() where TClass : class;
 
         /// <summary>
-        /// Registers as single instance.
+        ///     Registers as single instance.
         /// </summary>
         /// <param name="implementation">The implementation.</param>
         /// <param name="interfaces">The interfaces.</param>
@@ -90,55 +97,61 @@ namespace Tokiota.Toolkit.XCutting.IoC
         IBuilder RegisterAsSingleInstance(Type implementation, Type[] interfaces);
 
         /// <summary>
-        /// Registers as single instance.
+        ///     Registers as single instance.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <returns></returns>
-        IBuilder RegisterAsSingleInstance<TInterface, TClass>() where TClass : TInterface;
+        IBuilder RegisterAsSingleInstance<TInterface, TClass>()
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers as single instance.
+        ///     Registers as single instance.
         /// </summary>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        IBuilder RegisterAsSingleInstance<TClass>(string name);
+        IBuilder RegisterAsSingleInstance<TClass>(string name) where TClass : class;
 
         /// <summary>
-        /// Registers as single instance.
+        ///     Registers as single instance.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        IBuilder RegisterAsSingleInstance<TInterface, TClass>(string name) where TClass : TInterface;
+        IBuilder RegisterAsSingleInstance<TInterface, TClass>(string name)
+            where TClass : TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers the assembly.
+        ///     Registers the assembly.
         /// </summary>
         /// <param name="assemblyNames">The assembly names.</param>
         /// <returns></returns>
         IBuilder RegisterAssembly(params string[] assemblyNames);
 
         /// <summary>
-        /// Registers the instance.
+        ///     Registers the instance.
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
         /// <param name="instance">The instance.</param>
         /// <returns></returns>
-        IBuilder RegisterInstance<TInterface, TClass>(TClass instance) where TClass : class, TInterface;
+        IBuilder RegisterInstance<TInterface, TClass>(TClass instance)
+            where TClass : class, TInterface
+            where TInterface : class;
 
         /// <summary>
-        /// Registers the instance.
+        ///     Registers the instance.
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <returns></returns>
         IBuilder RegisterInstance(object instance);
 
         /// <summary>
-        /// Registers the type of the types in assembly filter by interface.
+        ///     Registers the type of the types in assembly filter by interface.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <param name="filterName">Name of the filter.</param>

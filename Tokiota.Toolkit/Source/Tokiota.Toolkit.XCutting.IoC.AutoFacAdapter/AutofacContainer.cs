@@ -6,7 +6,7 @@ using Autofac;
 namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
 {
     /// <summary>
-    /// Container
+    ///     Container
     /// </summary>
     public class AutofacContainer : IContainer
     {
@@ -35,12 +35,12 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             get { return context; }
         }
 
+        #endregion
+
         //internal ILifetimeScope LifetimeScope
         //{
         //    get { return lifetimeScope; }
         //}
-
-        #endregion
 
         #region Public Methods and Operators
 
@@ -54,17 +54,17 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             return Context.ResolveNamed(name, type);
         }
 
-        public TInterface Resolve<TInterface>()
+        public TInterface Resolve<TInterface>() where TInterface : class
         {
             return Context.Resolve<TInterface>();
         }
 
-        public TInterface Resolve<TInterface>(string name)
+        public TInterface Resolve<TInterface>(string name) where TInterface : class
         {
             return Context.ResolveNamed<TInterface>(name);
         }
 
-        public IEnumerable<TInterface> ResolveAll<TInterface>()
+        public IEnumerable<TInterface> ResolveAll<TInterface>() where TInterface : class
         {
             return Context.Resolve<IEnumerable<TInterface>>();
         }

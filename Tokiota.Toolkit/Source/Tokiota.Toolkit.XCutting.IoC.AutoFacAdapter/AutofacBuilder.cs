@@ -4,10 +4,12 @@ using System.Reflection;
 
 using Autofac;
 
+using Tokiota.Toolkit.XCutting.Helpers;
+
 namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
 {
     /// <summary>
-    /// Builder for desktop application with autofac
+    ///     Builder for desktop application with autofac
     /// </summary>
     public class AutofacBuilder : IBuilder
     {
@@ -28,13 +30,13 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
 
         #region Public Methods and Operators
 
-        public IBuilder Register<TClass>()
+        public IBuilder Register<TClass>() where TClass : class
         {
             builder.RegisterType<TClass>();
             return this;
         }
 
-        public IBuilder Register<TInterface, TClass>() where TClass : TInterface
+        public IBuilder Register<TInterface, TClass>() where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>();
             return this;
@@ -46,26 +48,28 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             return this;
         }
 
-        public IBuilder Register<TInterface, TClass>(string name) where TClass : TInterface
+        public IBuilder Register<TInterface, TClass>(string name) where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>().Named<TInterface>(name);
             return this;
         }
 
-        public IBuilder RegisterAsRequestScoped<TClass>()
+        public IBuilder RegisterAsRequestScoped<TClass>() where TClass : class
         {
             builder.RegisterType<TClass>().InstancePerLifetimeScope();
             return this;
         }
 
-        public IBuilder RegisterAsRequestScoped<TInterface, TClass>() where TClass : TInterface
+        public IBuilder RegisterAsRequestScoped<TInterface, TClass>() where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>().InstancePerLifetimeScope();
             return this;
         }
+
         /// <summary>
-        /// This is useful for objects specific to a single unit of work that may need to nest additional logical units of work. 
-        /// Each nested lifetime scope will get a new instance of the registered dependency.
+        ///     This is useful for objects specific to a single unit of work that may need to nest additional logical units of
+        ///     work.
+        ///     Each nested lifetime scope will get a new instance of the registered dependency.
         /// </summary>
         /// <typeparam name="TClass"></typeparam>
         /// <param name="name"></param>
@@ -75,7 +79,7 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             return this;
         }
 
-        public IBuilder RegisterAsRequestScoped<TInterface, TClass>(string name) where TClass : TInterface
+        public IBuilder RegisterAsRequestScoped<TInterface, TClass>(string name) where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>().Named<TInterface>(name).InstancePerLifetimeScope();
             return this;
@@ -93,35 +97,27 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             return this;
         }
 
-        public IBuilder RegisterAsSingleInstance<TInterface, TClass>() where TClass : TInterface
+        public IBuilder RegisterAsSingleInstance<TInterface, TClass>() where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>().SingleInstance();
             return this;
         }
 
-        public IBuilder RegisterAsSingleInstance<TClass>(string name)
+        public IBuilder RegisterAsSingleInstance<TClass>(string name) where TClass : class
         {
             builder.RegisterType<TClass>().Named<TClass>(name).SingleInstance();
             return this;
         }
-        
-        public IBuilder RegisterAsSingleInstance<TInterface, TClass>(string name) where TClass : TInterface
+
+        public IBuilder RegisterAsSingleInstance<TInterface, TClass>(string name) where TClass : TInterface where TInterface : class
         {
             builder.RegisterType<TClass>().As<TInterface>().Named<TInterface>(name).SingleInstance();
             return this;
         }
 
-        public IBuilder RegisterTypesInAssemblyFilterByInterfaceType(Assembly assembly, Type filterName)
-        {
-            builder.RegisterAssemblyTypes(assembly)
-                .AsClosedTypesOf(filterName);
-
-            return this;
-
-        }
-        
         public IBuilder RegisterAssembly(params string[] assemblyNames)
         {
+            Ensure.Argument.NotNull(assemblyNames);
             foreach (string assemblyPath in assemblyNames)
             {
                 var assemblyName = new AssemblyName(assemblyPath);
@@ -134,15 +130,26 @@ namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
             return this;
         }
 
-        public IBuilder RegisterInstance<TInterface, TClass>(TClass instance) where TClass : class, TInterface
+        public IBuilder RegisterInstance<TInterface, TClass>(TClass instance) where TClass : class, TInterface where TInterface : class
         {
-            builder.RegisterInstance(instance).As<TInterface>().SingleInstance();
+            builder.RegisterInstance(instance)
+                .As<TInterface>()
+                .SingleInstance();
+
             return this;
         }
 
         public IBuilder RegisterInstance(object instance)
         {
             builder.RegisterInstance(instance);
+            return this;
+        }
+
+        public IBuilder RegisterTypesInAssemblyFilterByInterfaceType(Assembly assembly, Type filterName)
+        {
+            builder.RegisterAssemblyTypes(assembly)
+                .AsClosedTypesOf(filterName);
+
             return this;
         }
 

@@ -41,7 +41,12 @@
     <Compile Include="..\..\SharedFiles\ProductAssemblyInfo.cs">
       <Link>Properties\ProductAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\Common.cs" />
+    <Compile Include="Helpers\Ensure.cs" />
+    <Compile Include="Helpers\RegexUtils.cs" />
+    <Compile Include="IoC\IContainerAccesor.cs" />
     <Compile Include="IoC\IModuleRegistration.cs" />
     <Compile Include="IoC\IBuilder.cs" />
     <Compile Include="IoC\IContainer.cs" />

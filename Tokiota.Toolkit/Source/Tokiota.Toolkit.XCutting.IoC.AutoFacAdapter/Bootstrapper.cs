@@ -3,14 +3,14 @@
 namespace Tokiota.Toolkit.XCutting.IoC.AutofacAdapter
 {
     /// <summary>
-    /// Call for boostrapp
-    /// <example>
-    ///     IContainer container = Bootstrapper.Register(bdr =>
-    ///        {
-    ///            new Library1ModuleRegistration().Register(bdr);
-    ///            new Library2ModuleRegistration().Register(bdr);
-    ///        });
-    /// </example>
+    ///     Call for boostrapp
+    ///     <example>
+    ///         IContainer container = Bootstrapper.Register(bdr =>
+    ///         {
+    ///         new Library1ModuleRegistration().Register(bdr);
+    ///         new Library2ModuleRegistration().Register(bdr);
+    ///         });
+    ///     </example>
     /// </summary>
     public static class Bootstrapper
     {

@@ -15,5 +15,8 @@
 		<Message Text="nuget pack para  $(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj" />
 		<Exec 	Command="&quot;$(NuGetCommandLinePath)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj&quot; -IncludeReferencedProjects" 
 				WorkingDirectory="$(PackageDirectory)"/>	
+		
+		<Exec 	Command="&quot;$(NuGetCommandLinePath)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects" 
+				WorkingDirectory="$(PackageDirectory)"/>
 	</Target>
 </Project>
