@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
@@ -8,6 +7,8 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 {
     public class ResultList<TEntity>
     {
+        #region Constructors and Destructors
+
         public ResultList(IEnumerable<TEntity> added, IEnumerable<TEntity> deleted, IEnumerable<TEntity> modified, IEnumerable<TEntity> noChanged)
         {
             NoChanged = noChanged;
@@ -16,13 +17,21 @@ namespace Tokiota.Toolkit.XCutting.Helpers
             Added = added;
         }
 
+        #endregion
+
+        #region Public Properties
+
         public IEnumerable<TEntity> Added { get; private set; }
+
         public IEnumerable<TEntity> Deleted { get; private set; }
+
         public IEnumerable<TEntity> Modified { get; private set; }
-        public IEnumerable<TEntity> NoChanged { get; private set; } 
 
+        public IEnumerable<TEntity> NoChanged { get; private set; }
 
+        #endregion
     }
+
     public static class Common
     {
         //TODo: crear test unitario
@@ -35,7 +44,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
             //Ensure.Argument.NotNull(bdList,"bdList");
 
-            if (bdList == null)
+            if(bdList == null)
                 throw new ArgumentNullException("bdList");
             bool rtv = false;
             // if (!bdList.Any()) return rtv;
@@ -46,7 +55,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
                 bdList.Add(item);
                 rtv = true;
             }
-            
+
             return rtv;
         }
 
@@ -63,7 +72,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
             var noChangeList = new List<T>();
             if(bdList != null)
                 deleteList.AddRange(bdList);
-                
+
             if(uiList != null)
             {
                 foreach (T uiEntity in uiList)
@@ -83,7 +92,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
                 }
             }
 
-            return new ResultList<T>(createList,deleteList,updateList,noChangeList);
+            return new ResultList<T>(createList, deleteList, updateList, noChangeList);
         }
 
         public static bool UnassignElement<T>(ICollection<T> bdList, T item) where T : class
@@ -92,11 +101,8 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
             bool rtv = false;
             if(bdList.Any())
-            {
                 rtv = bdList.Remove(item);
-            }
             return rtv;
-
         }
 
         #endregion

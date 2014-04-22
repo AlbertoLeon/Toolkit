@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -22,6 +22,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
             That(left != null && right != null && left.Equals(right), message);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public static void Length(string stringValue, int maximum, string message)
         {
             NotNull(stringValue);
@@ -34,7 +35,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
         public static void Length(string stringValue, int minimum, int maximum, string message)
         {
             NotNull(stringValue);
-            
+
             int length = stringValue.Trim().Length;
             if(length < minimum || length > maximum)
                 throw new InvalidOperationException(message);
