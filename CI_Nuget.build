@@ -4,6 +4,16 @@
 	</Target>
 	
 	<Target Name="CreatePackages" >
+		<PropertyGroup Condition="'$(NugetExe)' == ''">
+			<!-- Determines if the build is running under MyGet Build Services. -->
+			<NugetExe Condition="'$(BuildRunner)' == 'MyGet'">$(NuGet)</NugetExe>
+			<NugetExe Condition="'$(BuildRunner)' != 'MyGet'">$(NuGetCommandLinePath)</NugetExe>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Version)' == ''">
+			<!-- Determines if the build is running under MyGet Build Services. -->
+			<Version Condition="'$(BuildRunner)' == 'MyGet'">$(PackageVersion)</NugetExe>
+			<Version Condition="'$(BuildRunner)' != 'MyGet'">1.0.0.0</NugetExe>
+		</PropertyGroup>
 		<PropertyGroup>
 			<!-- All packages will end up in the package directory. -->
 			<PackageDirectory>$(DefaultPackageOutputDir)\ToPublish</PackageDirectory>
@@ -12,11 +22,11 @@
 			<StagingDirectory>$(PackageDirectory)\nuspec-staging</StagingDirectory>
 		</PropertyGroup>
 		<MakeDir Directories="$(PackageDirectory);$(StagingDirectory)"/>
-		<Message Text="nuget pack para  $(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj" />
-		<Exec 	Command="&quot;$(NuGetCommandLinePath)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter.csproj&quot; -IncludeReferencedProjects" 
+		
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj&quot; -IncludeReferencedProjects -symbols -o $(PackageDirectory) Configuration=$(BuildConfiguration)$(Version)" 
 				WorkingDirectory="$(PackageDirectory)"/>	
 		
-		<Exec 	Command="&quot;$(NuGetCommandLinePath)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects" 
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects -o " 
 				WorkingDirectory="$(PackageDirectory)"/>
 	</Target>
 </Project>
