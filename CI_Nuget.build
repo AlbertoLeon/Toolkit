@@ -9,11 +9,6 @@
 			<NugetExe Condition="'$(BuildRunner)' == 'MyGet'">$(NuGet)</NugetExe>
 			<NugetExe Condition="'$(BuildRunner)' != 'MyGet'">$(NuGetCommandLinePath)</NugetExe>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Version)' == ''">
-			<!-- Determines if the build is running under MyGet Build Services. -->
-			<Version Condition="'$(BuildRunner)' == 'MyGet'">$(PackageVersion)</Version>
-			<Version Condition="'$(BuildRunner)' != 'MyGet'">1.0.0.0</Version>
-		</PropertyGroup>
 		<PropertyGroup>
 			<!-- All packages will end up in the package directory. -->
 			<PackageDirectory>$(DefaultPackageOutputDir)\ToPublish</PackageDirectory>
@@ -23,8 +18,8 @@
 		</PropertyGroup>
 		<MakeDir Directories="$(PackageDirectory);$(StagingDirectory)"/>
 		
-		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot; -Version $(Version)" />
-		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects -OutputDirectory $(PackageDirectory) -Version $(WebFormsIoC-PackageVersion)" />
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot;" />
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory $(PackageDirectory)" />
 				
 	</Target>
 </Project>

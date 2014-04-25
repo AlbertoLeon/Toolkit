@@ -66,7 +66,39 @@
     <CallTarget Targets="Test" />
   </Target>
   <Target Name="None" >
-	<CallTarget Targets="Clean; RestorePackages; Compile; Test" />
+	<CallTarget Targets="UpdateVersion; Clean; RestorePackages; Compile; Test" />
 	<CallTarget Targets="CreatePackages" Condition="'$(Production)' == 'true'"/>
   </Target>
+	<ItemGroup>
+		<AutofacProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj">
+			<AssemblyVersion>3.3.0.0</AssemblyVersion>
+			<FileVersion>3.3.1.0</FileVersion>
+			<PackageName>Autofac</PackageName>
+			<PackageVersion>3.3.1-alpha</PackageVersion>
+		</AutofacProject>
+		<AutofacProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj">
+			<AssemblyVersion>3.3.0.0</AssemblyVersion>
+			<FileVersion>3.3.0.0</FileVersion>
+			<PackageName>Autofac.Configuration</PackageName>
+			<PackageVersion>3.3.0-alpha</PackageVersion>
+		</AutofacProject>
+	</ItemGroup>
+	<Target Name="UpdateVersion">
+		<AssemblyInfo Condition="'%(AutofacProject.PackageName)' != ''"
+			OutputFile="%(AutofacProject.RootDir)%(AutofacProject.Directory)Properties\PackageVersion.cs"
+			CodeLanguage="CS"
+			AssemblyVersion="%(AutofacProject.AssemblyVersion)"
+			AssemblyFileVersion="%(AutofacProject.FileVersion)"
+			AssemblyConfiguration="$(BuildConfiguration) built on $(BuildTime)"
+			AssemblyCopyright="Copyright @ $(BuildYear) Autofac Contributors"
+			AssemblyInformationalVersion="%(AutofacProject.PackageVersion)"
+			AssemblyDescription="%(AutofacProject.PackageName) %(AutofacProject.PackageVersion)" />
+		<AssemblyInfo Condition="'%(AutofacProject.PackageName)' == ''"
+			OutputFile="%(AutofacProject.RootDir)%(AutofacProject.Directory)Properties\PackageVersion.cs"
+			CodeLanguage="CS"
+			AssemblyVersion="%(AutofacProject.AssemblyVersion)"
+			AssemblyFileVersion="%(AutofacProject.FileVersion)"
+			AssemblyConfiguration="$(BuildConfiguration) built on $(BuildTime)"
+			AssemblyCopyright="Copyright @ $(BuildYear) Autofac Contributors" />
+	</Target>
 </Project>
