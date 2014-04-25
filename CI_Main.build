@@ -66,7 +66,6 @@
     <CallTarget Targets="Test" />
   </Target>
   <Target Name="None" >
-	<Message Text="$(WebFormsIoC-PackageName)" />
 	<CallTarget Targets="Clean; RestorePackages; Compile; Test" />
 	<CallTarget Targets="CreatePackages" Condition="'$(Production)' == 'true'"/>
   </Target>

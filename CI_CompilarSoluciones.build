@@ -3,7 +3,7 @@
 	<Target Name="Compile" >
 		
 		<Message Text="Compilando ...." />
-		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="Build" Properties="Platform=Any CPU;Configuration=$(BuildConfiguration)" />
+		<MSBuild BuildInParallel="true" Projects="%(SolutionFile.FullPath)" Targets="ReBuild" Properties="Platform=Any CPU;Configuration=$(BuildConfiguration)" />
 		<ItemGroup>
 			<SourcePortableOutputList
 				Include="
