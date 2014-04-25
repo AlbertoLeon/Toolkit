@@ -27,7 +27,7 @@
 	</ItemGroup>
 	<PropertyGroup Condition="'$(BuildConfiguration)' == ''">
 		<!-- Unless otherwise specified, dev build is Debug, production build is Release. -->
-		<BuildConfiguration Condition="'$(Production)' == 'true'">Release</BuildConfiguration>
+		<BuildConfiguration Condition="'$(Production)' == 'true'">Debug</BuildConfiguration>
 		<BuildConfiguration Condition="'$(Production)' != 'true'">Release</BuildConfiguration>
 	</PropertyGroup>
 
@@ -66,7 +66,8 @@
     <CallTarget Targets="Test" />
   </Target>
   <Target Name="None" >
+	<Message Text="$(WebFormsIoC-PackageName)" />
 	<CallTarget Targets="Clean; RestorePackages; Compile; Test" />
-	<CallTarget Targets="CreatePackages" />
+	<CallTarget Targets="CreatePackages" Condition="'$(Production)' == 'true'"/>
   </Target>
 </Project>

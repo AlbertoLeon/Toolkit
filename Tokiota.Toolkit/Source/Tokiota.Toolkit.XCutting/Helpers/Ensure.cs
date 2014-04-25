@@ -105,7 +105,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
         public static void TrueForAll<T>(IEnumerable<T> collection, Func<T, bool> predicate, string message = "")
         {
-            That(collection != null && collection.All(predicate));
+            That(collection != null && collection.All(predicate),message);
         }
 
         #endregion

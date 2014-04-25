@@ -26,7 +26,7 @@
 		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot; -Version $(Version)" />
 				
 		
-		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects -OutputDirectory $(PackageDirectory) -Version $(Version)" />
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -IncludeReferencedProjects -OutputDirectory $(PackageDirectory) -Version $(WebFormsIoC-PackageVersion)" />
 				
 	</Target>
 </Project>

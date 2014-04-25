@@ -54,7 +54,6 @@
       <Link>Properties\ProductAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Bootstrap.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="InversionOfControl.cs" />
     <Compile Include="Properties\PackageVersion.cs" />
     <Compile Include="WindsorBuilder.cs" />
