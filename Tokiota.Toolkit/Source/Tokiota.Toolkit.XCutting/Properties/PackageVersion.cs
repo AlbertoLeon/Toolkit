@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyInformationalVersion("1.0.0-alpha")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: AssemblyConfiguration("Release built on 2014-01-07 21:40")]

@@ -1,0 +1,8 @@
+@echo off
+@%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\msbuild TFSBuild.proj
+
+pause
+
+rem ".\Tools\nuget\nuget.exe" push ".\build_output\package\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.1.0.0-alpha.nupkg" "5d0baf8b-1561-4e34-8d4d-b8580d88ab01" -Source "https://www.myget.org/F/daniel-mazzini-myget/api/v2/package"
+
+rem pause

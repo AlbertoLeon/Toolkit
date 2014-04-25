@@ -6,7 +6,7 @@
 	<Target Name="CreatePackages" >
 		<PropertyGroup>
 			<!-- All packages will end up in the package directory. -->
-			<PackageDirectory>$(DefaultPackageOutputDir)\package</PackageDirectory>
+			<PackageDirectory>$(DefaultPackageOutputDir)\ToPublish</PackageDirectory>
 
 			<!-- Nuspec/NuGet package contents will be staged in a temporary location for building. -->
 			<StagingDirectory>$(PackageDirectory)\nuspec-staging</StagingDirectory>
