@@ -18,8 +18,6 @@
 
 		<NuGetCommandLinePath>$(MSBuildProjectDirectory)\Tools\NuGet\NuGet.exe</NuGetCommandLinePath>
 		
-		<PackageSource>C:\NuGet\Cache</PackageSource>
-		
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- SolutionFile is the solution to build. Technically we could add more if needed. -->
@@ -59,46 +57,27 @@
 		<Message Text="Default Package OutputDir:   $(DefaultPackageOutputDir)" />
 		<Message Text="Build Time:          		$(BuildTime)" />
 	</Target>
-  <Target Name="CI-DEV" >
-    <CallTarget Targets="Clean" />
-    <CallTarget Targets="UpdateNugetPackages" />
-    <CallTarget Targets="BuildWord" />
-    <CallTarget Targets="Test" />
-  </Target>
-  <Target Name="None" >
-	<CallTarget Targets="UpdateVersion; Clean; RestorePackages; Compile; Test" />
-	<CallTarget Targets="CreatePackages" Condition="'$(Production)' == 'true'"/>
-  </Target>
-	<ItemGroup>
-		<AutofacProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj">
-			<AssemblyVersion>3.3.0.0</AssemblyVersion>
-			<FileVersion>3.3.1.0</FileVersion>
-			<PackageName>Autofac</PackageName>
-			<PackageVersion>3.3.1-alpha</PackageVersion>
-		</AutofacProject>
-		<AutofacProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj">
-			<AssemblyVersion>3.3.0.0</AssemblyVersion>
-			<FileVersion>3.3.0.0</FileVersion>
-			<PackageName>Autofac.Configuration</PackageName>
-			<PackageVersion>3.3.0-alpha</PackageVersion>
-		</AutofacProject>
-	</ItemGroup>
+	<Target Name="None" >
+		<CallTarget Targets="UpdateVersion; Clean; RestorePackages; Compile; Test" />
+		<CallTarget Targets="CreatePackages" Condition="'$(Production)' == 'true'"/>
+	</Target>
+	
 	<Target Name="UpdateVersion">
-		<AssemblyInfo Condition="'%(AutofacProject.PackageName)' != ''"
-			OutputFile="%(AutofacProject.RootDir)%(AutofacProject.Directory)Properties\PackageVersion.cs"
+		<AssemblyInfo Condition="'%(ToolkitProject.PackageName)' != ''"
+			OutputFile="%(ToolkitProject.RootDir)%(ToolkitProject.Directory)Properties\PackageVersion.cs"
 			CodeLanguage="CS"
-			AssemblyVersion="%(AutofacProject.AssemblyVersion)"
-			AssemblyFileVersion="%(AutofacProject.FileVersion)"
+			AssemblyVersion="%(ToolkitProject.AssemblyVersion)"
+			AssemblyFileVersion="%(ToolkitProject.FileVersion)"
 			AssemblyConfiguration="$(BuildConfiguration) built on $(BuildTime)"
-			AssemblyCopyright="Copyright @ $(BuildYear) Autofac Contributors"
-			AssemblyInformationalVersion="%(AutofacProject.PackageVersion)"
-			AssemblyDescription="%(AutofacProject.PackageName) %(AutofacProject.PackageVersion)" />
-		<AssemblyInfo Condition="'%(AutofacProject.PackageName)' == ''"
-			OutputFile="%(AutofacProject.RootDir)%(AutofacProject.Directory)Properties\PackageVersion.cs"
+			AssemblyCopyright="Copyright @ $(BuildYear) Tokiota SL"
+			AssemblyInformationalVersion="%(ToolkitProject.PackageVersion)"
+			AssemblyDescription="%(ToolkitProject.PackageName) %(ToolkitProject.PackageVersion)" />
+		<AssemblyInfo Condition="'%(ToolkitProject.PackageName)' == ''"
+			OutputFile="%(ToolkitProject.RootDir)%(ToolkitProject.Directory)Properties\PackageVersion.cs"
 			CodeLanguage="CS"
-			AssemblyVersion="%(AutofacProject.AssemblyVersion)"
-			AssemblyFileVersion="%(AutofacProject.FileVersion)"
+			AssemblyVersion="%(ToolkitProject.AssemblyVersion)"
+			AssemblyFileVersion="%(ToolkitProject.FileVersion)"
 			AssemblyConfiguration="$(BuildConfiguration) built on $(BuildTime)"
-			AssemblyCopyright="Copyright @ $(BuildYear) Autofac Contributors" />
+			AssemblyCopyright="Copyright @ $(BuildYear) Tokiota SL" />
 	</Target>
 </Project>

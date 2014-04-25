@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 
-<PropertyGroup>
-	<WebFormsIoC-PackageVersion>1.0.0-alpha$(BuildCounter)</WebFormsIoC-PackageVersion>
-</PropertyGroup>
+<ItemGroup>
+		<ToolkitProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj">
+			<AssemblyVersion>1.0.0.0</AssemblyVersion>
+			<FileVersion>1.0.0.0</FileVersion>
+			<PackageName>Tokiota.Toolkit.IoC.AutofacAdapter</PackageName>
+			<PackageVersion>1.0.0-alpha</PackageVersion>
+		</ToolkitProject>
+		<ToolkitProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj">
+			<AssemblyVersion>3.3.0.0</AssemblyVersion>
+			<FileVersion>3.3.0.0</FileVersion>
+			<PackageName>Tokiota.Toolkit.IoC.WebForm.WindsorAdapter</PackageName>
+			<PackageVersion>1.0.0-alpha</PackageVersion>
+		</ToolkitProject>
+	</ItemGroup>
 
 </Project>
