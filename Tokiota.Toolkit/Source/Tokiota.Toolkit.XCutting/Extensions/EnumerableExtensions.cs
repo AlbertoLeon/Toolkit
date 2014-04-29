@@ -29,7 +29,7 @@ namespace Tokiota.Toolkit.XCutting.Extensions
 
 
         /// <summary>
-        /// Gets the page.
+        /// Gets a page from a source.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
@@ -46,7 +46,7 @@ namespace Tokiota.Toolkit.XCutting.Extensions
         }
 
         /// <summary>
-        /// To the read only collection.
+        /// Convert to read only collection.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerable">The enumerable.</param>
@@ -84,5 +84,20 @@ namespace Tokiota.Toolkit.XCutting.Extensions
 
             return string.Join(separator, values);
         }
+
+        /// <summary>
+        /// Return a empty enumerable when is a null enumerable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> source)
+        {
+            if (source == null)
+                return Enumerable.Empty<T>();
+
+            return source;
+        }
+
     }
 }
