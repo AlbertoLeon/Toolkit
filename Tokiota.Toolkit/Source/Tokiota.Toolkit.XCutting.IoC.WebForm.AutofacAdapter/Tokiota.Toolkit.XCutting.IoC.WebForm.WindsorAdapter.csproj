@@ -38,7 +38,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>TokiotaToolkitTemp.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\SharedFiles\TokiotaToolkitTemp.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
@@ -76,7 +76,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="TokiotaToolkitTemp.pfx" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\SharedFiles\CodeAnalysisDictionary.xml">
