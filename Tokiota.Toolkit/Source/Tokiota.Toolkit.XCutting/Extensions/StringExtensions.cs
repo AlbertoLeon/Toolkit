@@ -41,7 +41,11 @@ namespace Tokiota.Toolkit.XCutting.Extensions
                     throw new FormatException(string.Format("'{0}' cannot be converted as double", input));
             return result;
         }
-
+        public static bool AsBoolean(this string input)
+        {
+            var stringTrueValues = new[] { "true", "ok", "yes", "1", "да" };
+            return stringTrueValues.Contains(input.ToLower());
+        }
         public static byte[] AsByteArray(this string input)
         {
             var bytesArray = new byte[input.Length * sizeof(char)];
@@ -105,7 +109,6 @@ namespace Tokiota.Toolkit.XCutting.Extensions
                 : "application/octet-stream";
         }
 
-
         public static string AsSentence(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -117,12 +120,6 @@ namespace Tokiota.Toolkit.XCutting.Extensions
             var result = Regex.Replace(input, "(\\B[A-Z])", " $1");
             return result;
         }
-
-        public static bool AsBoolean(this string input)
-        {
-            var stringTrueValues = new[] { "true", "ok", "yes", "1", "да" };
-            return stringTrueValues.Contains(input.ToLower());
-        }
         public static string Left(this string s, int characters)
         {
             if (characters < 0)
@@ -131,7 +128,6 @@ namespace Tokiota.Toolkit.XCutting.Extensions
                 characters = s.Length;
             return s.Substring(0, characters);
         }
-
         public static string Right(this string s, int characters)
         {
             if (characters < 0)
@@ -140,20 +136,12 @@ namespace Tokiota.Toolkit.XCutting.Extensions
                 characters = s.Length;
             return s.Substring(s.Length - characters, characters);
         }
-
         public static bool IsNumber(this string input)
         {
             var match = Regex.Match(input, @"^[0-9]+$", RegexOptions.IgnoreCase);
             return match.Success;
         } 
 
-        /// <summary>
-        /// Determines whether [contains] [the specified source].
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="input">The input.</param>
-        /// <param name="comparison">The comparison.</param>
-        /// <returns></returns>
         public static bool Contains(this string source, string input, StringComparison comparison)
         {
             Ensure.NotNull(source);
@@ -161,12 +149,6 @@ namespace Tokiota.Toolkit.XCutting.Extensions
             return source.IndexOf(input, comparison) >= 0;
         }
 
-        /// <summary>
-        /// Formats the with.
-        /// </summary>
-        /// <param name="format">The format.</param>
-        /// <param name="args">The arguments.</param>
-        /// <returns></returns>
         public static string FormatWith(this string format, params object[] args)
         {
             Ensure.NotNull(format);
@@ -174,34 +156,16 @@ namespace Tokiota.Toolkit.XCutting.Extensions
             return string.Format(format, args);
         }
 
-        /// <summary>
-        /// Determines whether [is not null or empty] [the specified value].
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static bool IsNotNullOrEmpty(this string value)
         {
             return !value.IsNullOrEmpty();
         }
 
-        /// <summary>
-        /// Determines whether [is null or empty] [the specified value].
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static bool IsNullOrEmpty(this string value)
         {
             return string.IsNullOrEmpty(value);
         }
 
-
-        /// <summary>
-        /// Limits the specified source.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="maxLength">The maximum length.</param>
-        /// <param name="suffix">The suffix.</param>
-        /// <returns></returns>
         public static string Limit(this string source, int maxLength, string suffix = null)
         {
             Ensure.NotNull(source);
@@ -215,48 +179,25 @@ namespace Tokiota.Toolkit.XCutting.Extensions
             return string.Concat(source.Substring(0, maxLength).Trim(), suffix ?? string.Empty);
         }
 
-        /// <summary>
-        /// Nulls if empty.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static string NullIfEmpty(this string value)
         {
-            if(value == string.Empty)
-                return null;
-
-            return value;
+            return value == string.Empty
+                ? null
+                : value;
         }
 
-        /// <summary>
-        /// Separates the pascal case.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static string SeparatePascalCase(this string value)
         {
             Ensure.Argument.NotNullOrEmpty(value, "value");
             return Regex.Replace(value, "([A-Z])", " $1").Trim();
         }
 
-        /// <summary>
-        /// Splits the and trim.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="separators">The separators.</param>
-        /// <returns></returns>
         public static IEnumerable<string> SplitAndTrim(this string value, params char[] separators)
         {
             Ensure.Argument.NotNull(value, "value");
             return value.Trim().Split(separators, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim());
         }
 
-        /// <summary>
-        /// To the slug.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="maxLength">The maximum length.</param>
-        /// <returns></returns>
         public static string ToSlug(this string value, int? maxLength = null)
         {
             Ensure.Argument.NotNull(value, "value");
@@ -268,11 +209,6 @@ namespace Tokiota.Toolkit.XCutting.Extensions
             return GenerateSlug(value, maxLength);
         }
 
-        /// <summary>
-        /// To the slug with segments.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
         public static string ToSlugWithSegments(this string value)
         {
             Ensure.Argument.NotNull(value, "value");
