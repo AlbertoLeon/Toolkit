@@ -14,11 +14,11 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("3.3.0.0")]
-[assembly: AssemblyFileVersion("3.3.0.0")]
-[assembly: AssemblyConfiguration("Debug built on 2014-04-26 00:35")]
-[assembly: AssemblyCopyright("Copyright @ 2014 Autofac Contributors")]
-[assembly: AssemblyInformationalVersion("3.3.0-alpha")]
-[assembly: AssemblyDescription("Autofac.Configuration 3.3.0-alpha")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyConfiguration("Debug built on 2014-05-06 00:53")]
+[assembly: AssemblyCopyright("Copyright @ 2014 Tokiota SL")]
+[assembly: AssemblyInformationalVersion("1.0.1-alpha")]
+[assembly: AssemblyDescription("Tokiota.Toolkit.IoC.WebForm.WindsorAdapter 1.0.1-alpha")]
 
 

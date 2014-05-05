@@ -14,12 +14,14 @@
       <Word>Autofac</Word>
       <Word>Moq</Word>
       <Word>IoC</Word>
+      <Word>RegexUtils</Word>
     </Recognized>
   </Words>
 
   <Acronyms>
     <CasingExceptions>
       <Acronym>ioc</Acronym>
+      <Acronym>ip</Acronym>
     </CasingExceptions>
   </Acronyms>
 </Dictionary>

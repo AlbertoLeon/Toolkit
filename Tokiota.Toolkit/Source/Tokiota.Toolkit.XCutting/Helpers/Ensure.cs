@@ -71,7 +71,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
         public static void NotNullOrEmpty(string value, string message = "String cannot be null or empty")
         {
-            That(value.IsNotNullOrEmpty(), message);
+            That(string.IsNullOrEmpty(value), message);
         }
 
         public static void Range(double value, double minimum, double maximum, string message)
@@ -131,9 +131,9 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
             public static void NotNullOrEmpty(string value, string parameterName = "")
             {
-                if(value.IsNullOrEmpty())
+                if(string.IsNullOrEmpty(value))
                 {
-                    if(parameterName.IsNullOrEmpty())
+                    if(string.IsNullOrEmpty(parameterName))
                         throw new ArgumentException("String value cannot be empty");
 
                     throw new ArgumentException("String parameter " + parameterName + " cannot be null or empty", parameterName);

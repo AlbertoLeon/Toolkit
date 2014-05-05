@@ -9,10 +9,16 @@
 			<PackageVersion>1.0.0-alpha</PackageVersion>
 		</ToolkitProject>
 		<ToolkitProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj">
-			<AssemblyVersion>3.3.0.0</AssemblyVersion>
-			<FileVersion>3.3.0.0</FileVersion>
+			<AssemblyVersion>1.0.0.0</AssemblyVersion>
+			<FileVersion>1.0.0.0</FileVersion>
 			<PackageName>Tokiota.Toolkit.IoC.WebForm.WindsorAdapter</PackageName>
 			<PackageVersion>1.0.1-alpha</PackageVersion>
+		</ToolkitProject>
+		<ToolkitProject Include="$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\StringExtensions\StringExtensions.csproj">
+			<AssemblyVersion>3.3.0.0</AssemblyVersion>
+			<FileVersion>3.3.0.0</FileVersion>
+			<PackageName>Tokiota.Toolkit.StringExtensions</PackageName>
+			<PackageVersion>1.0.0-alpha</PackageVersion>
 		</ToolkitProject>
 	</ItemGroup>
 

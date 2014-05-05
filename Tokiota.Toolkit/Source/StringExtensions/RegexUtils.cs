@@ -1,9 +1,15 @@
 using System.Text.RegularExpressions;
 
-namespace Tokiota.Toolkit.XCutting.Helpers
+namespace Tokiota.Toolkit.Extensions
 {
-    public static class RegexUtils
+    public static class RegularExpressionUtils
     {
+        #region Constants
+
+        public const string SlugBasicPattern = @"[^a-z0-9\s-]";
+
+        #endregion
+
         #region Static Fields
 
         public static readonly Regex EmailRegex = new Regex(@"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$");
@@ -14,7 +20,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
         public static readonly Regex PositiveNumberRegex = new Regex(@"^[1-9]+[0-9]*$");
 
-        public static readonly Regex SlugBasic = new Regex(@"[^a-z0-9\s-]");
+        public static readonly Regex SlugBasic = new Regex(SlugBasicPattern);
 
         public static readonly Regex SlugRegex = new Regex(@"(^[a-z0-9])([a-z0-9_-]+)*([a-z0-9])$");
 
@@ -22,7 +28,7 @@ namespace Tokiota.Toolkit.XCutting.Helpers
 
         public static readonly Regex UrlRegex = new Regex(@"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$");
 
-        public static readonly Regex UsernameRegex = new Regex(@"^[a-z0-9_-]{5,16}$");
+        public static readonly Regex UserNameRegex = new Regex(@"^[a-z0-9_-]{5,16}$");
 
         #endregion
     }

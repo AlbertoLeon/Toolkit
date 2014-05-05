@@ -13,11 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokiota.Toolkit.XCutting.Io
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter", "Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj", "{10025E29-3340-4FC8-92AF-5FE7CCC1692F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormExample", "Examples\WebFormExample\WebFormExample.csproj", "{5752330F-1784-4D4C-8923-4020BEC87DB7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{572EB052-F650-4B37-AD7A-0BDA3114992B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormExample.Presenter", "Examples\WebFormExample.Presenter\WebFormExample.Presenter.csproj", "{11601D41-0FD8-4B90-A088-02EAC43DDF62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringExtensions", "Source\StringExtensions\StringExtensions.csproj", "{9D35691F-57F1-4702-9997-B450F2B96170}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,20 +37,12 @@ Global
 		{10025E29-3340-4FC8-92AF-5FE7CCC1692F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10025E29-3340-4FC8-92AF-5FE7CCC1692F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10025E29-3340-4FC8-92AF-5FE7CCC1692F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5752330F-1784-4D4C-8923-4020BEC87DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5752330F-1784-4D4C-8923-4020BEC87DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5752330F-1784-4D4C-8923-4020BEC87DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5752330F-1784-4D4C-8923-4020BEC87DB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11601D41-0FD8-4B90-A088-02EAC43DDF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11601D41-0FD8-4B90-A088-02EAC43DDF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11601D41-0FD8-4B90-A088-02EAC43DDF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11601D41-0FD8-4B90-A088-02EAC43DDF62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D35691F-57F1-4702-9997-B450F2B96170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D35691F-57F1-4702-9997-B450F2B96170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D35691F-57F1-4702-9997-B450F2B96170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D35691F-57F1-4702-9997-B450F2B96170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5752330F-1784-4D4C-8923-4020BEC87DB7} = {572EB052-F650-4B37-AD7A-0BDA3114992B}
-		{11601D41-0FD8-4B90-A088-02EAC43DDF62} = {572EB052-F650-4B37-AD7A-0BDA3114992B}
 	EndGlobalSection
 EndGlobal

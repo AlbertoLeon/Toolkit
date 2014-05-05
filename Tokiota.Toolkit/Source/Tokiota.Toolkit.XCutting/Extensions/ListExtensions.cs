@@ -11,6 +11,7 @@ namespace Tokiota.Toolkit.XCutting.Extensions
         /// <summary>
         /// Moves the item matching to the end of the list.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public static void MoveToEnd<T>(this List<T> list, Predicate<T> itemSelector)
         {
             Ensure.Argument.NotNull(list, "list");
@@ -21,6 +22,7 @@ namespace Tokiota.Toolkit.XCutting.Extensions
         /// <summary>
         /// Moves the item matching to the beginning of the list.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public static void MoveToBeginning<T>(this List<T> list, Predicate<T> itemSelector)
         {
             Ensure.Argument.NotNull(list, "list");
@@ -30,6 +32,7 @@ namespace Tokiota.Toolkit.XCutting.Extensions
         /// <summary>
         /// Moves the item matching to the position newIndex in the list.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public static void Move<T>(this List<T> list, Predicate<T> itemSelector, int newIndex) 
         {
             Ensure.Argument.NotNull(list, "list");
