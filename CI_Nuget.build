@@ -19,7 +19,7 @@
 		<MakeDir Directories="$(PackageDirectory);$(StagingDirectory)"/>
 		
 		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.AutoFacAdapter\Tokiota.Toolkit.XCutting.IoC.AutofacAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot;" />
-		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory $(PackageDirectory)" />
-		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\StringExtensions\StringExtensions.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory $(PackageDirectory)" />				
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\Tokiota.Toolkit.XCutting.IoC.WebForm.AutofacAdapter\Tokiota.Toolkit.XCutting.IoC.WebForm.WindsorAdapter.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot;" />
+		<Exec 	Command="&quot;$(NugetExe)&quot; pack &quot;$(MSBuildProjectDirectory)\Tokiota.Toolkit\Source\StringExtensions\StringExtensions.csproj&quot; -NoPackageAnalysis -IncludeReferencedProjects -OutputDirectory &quot;$(PackageDirectory)&quot;" />				
 	</Target>
 </Project>
