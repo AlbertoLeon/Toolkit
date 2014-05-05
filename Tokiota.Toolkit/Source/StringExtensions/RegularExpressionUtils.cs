@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Tokiota.Toolkit.Extensions
+namespace Tokiota.Toolkit.StringExtensions
 {
     public static class RegularExpressionUtils
     {

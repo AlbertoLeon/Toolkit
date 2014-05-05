@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 using Tokiota.Toolkit.XCutting.Helpers;
 
-namespace Tokiota.Toolkit.Extensions
+namespace Tokiota.Toolkit.StringExtensions
 {
     public static class StringExtensions
     {
@@ -79,7 +79,7 @@ namespace Tokiota.Toolkit.Extensions
             if(valid)
                 return result;
             if(throwExceptionIfFailed)
-                throw new FormatException(string.Format(CultureInfo.CurrentCulture, "'{0}' cannot be converted as DateTime", input));
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, "'{0}' cannot be converted as Date Time", input));
             return result;
         }
 
@@ -100,7 +100,8 @@ namespace Tokiota.Toolkit.Extensions
             return result;
         }
 
-        public static int AsInt(this string input, bool throwExceptionIfFailed = false)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "integer")]
+        public static int AsInteger(this string input, bool throwExceptionIfFailed = false)
         {
             int result;
             bool valid = int.TryParse(input, out result);
@@ -211,11 +212,13 @@ namespace Tokiota.Toolkit.Extensions
             return string.Concat(source.Substring(0, maxLength).Trim(), suffix ?? string.Empty);
         }
 
-        public static string NullIfEmpty(this string value)
+        public static string NullIfEmpty(this string source)
         {
-            return value == string.Empty
+            Ensure.NotNull(source);
+
+            return source.Length == 0
                 ? null
-                : value;
+                : source;
         }
 
         public static string Reverse(this string input)
@@ -230,6 +233,8 @@ namespace Tokiota.Toolkit.Extensions
 
         public static string Right(this string source, int characters)
         {
+            Ensure.NotNull(source);
+
             if(characters < 0)
                 throw new ArgumentOutOfRangeException("characters");
             if(characters > source.Length)
